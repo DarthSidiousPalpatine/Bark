@@ -1,0 +1,29 @@
+package com.Muurr.Bark.Misc;
+
+import com.Muurr.Bark.Constants;
+import com.Muurr.Bark.Items.BarkItems;
+import com.dunk.tfc.Reference;
+import com.dunk.tfc.api.TFCItems;
+import com.dunk.tfc.api.Constant.Global;
+import com.dunk.tfc.api.Crafting.LoomManager;
+import com.dunk.tfc.api.Crafting.LoomRecipe;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+public class Recipes {
+	public static void regRecipes() {
+		for (int i = 0; i <= Constants.BarkWoods.length; i++) {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(BarkItems.barksheet, 1, i+1), new ItemStack(BarkItems.barksheet, 1, i)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(BarkItems.barkstrip, 6, i), new ItemStack(BarkItems.barksheet, 1, i), "itemKnife"));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(BarkItems.barkstrip, 1, 1), new ItemStack(BarkItems.barkstrip, 1, i), "itemKnife"));
+			
+			//Loom
+			LoomManager.getInstance().addRecipe(new LoomRecipe(new ItemStack(BarkItems.barkstrip,16,i), new ItemStack(BarkItems.barkcloth,1,i)),new ResourceLocation("bark:textures/blocks/"+Constants.BarkWoods[i]+" ClothBlock.png"));
+		}
+		
+		
+	}
+}

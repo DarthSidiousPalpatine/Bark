@@ -1,0 +1,57 @@
+package com.Muurr.Bark.Handlers;
+
+import java.util.List;
+
+import com.Muurr.Bark.Items.BarkItems;
+import com.dunk.tfc.Core.TFC_Core;
+import com.dunk.tfc.Handlers.CraftingHandler;
+import com.dunk.tfc.api.Food;
+import com.dunk.tfc.api.TFCItems;
+import com.dunk.tfc.api.Interfaces.IFood;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+public class BarkCraftingHandler extends CraftingHandler{
+	@SubscribeEvent
+	public void onCrafting(ItemCraftedEvent e)
+	{
+		EntityPlayer player = e.player;
+		ItemStack craftResult = e.crafting;
+		Item itemresult = craftResult.getItem();
+		IInventory craftingInv = e.craftMatrix;
+		
+		if(craftingInv != null)
+        {
+            if(itemresult == TFCItems.pole){
+            	for (int i = 0; i < craftingInv.getSizeInventory(); i++)
+				{
+					if (craftingInv.getStackInSlot(i) == null)
+						continue;
+					if (craftingInv.getStackInSlot(i).getItem() == TFCItems.logs)
+					{
+						ItemStack is = craftingInv.getStackInSlot(i);
+						TFC_Core.giveItemToPlayer(new ItemStack(BarkItems.barksheet, 1, is.getItemDamage()/2 + 1), e.player);
+					}
+				}
+            }
+            else if(itemresult == BarkItems.barkstrip) {
+            	for (int i = 0; i < craftingInv.getSizeInventory(); i++) {
+            		if (craftingInv.getStackInSlot(i) == null)
+            			continue;
+            		if (craftingInv.getStackInSlot(i).getItem() == BarkItems.barksheet)
+					{
+            			List<ItemStack> knives = OreDictionary.getOres("itemKnife", false);
+        				handleItem(player, craftingInv, knives);
+					}
+            	}
+            }
+        }
+	}
+}

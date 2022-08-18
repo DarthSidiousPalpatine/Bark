@@ -1,0 +1,7 @@
+package com.Muurr.Bark;
+
+public class Constants {
+	public static final String[] BarkWoods = new String[] {
+			"StrippedBark", "BirchBark"
+	};
+}

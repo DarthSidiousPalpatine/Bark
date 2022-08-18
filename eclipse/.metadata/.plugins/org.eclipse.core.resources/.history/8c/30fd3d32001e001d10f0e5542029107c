@@ -1,0 +1,110 @@
+package com.Muurr.Bark.Items;
+
+import com.Muurr.Bark.Bark;
+import com.Muurr.Bark.Constants;
+import com.dunk.tfc.Reference;
+import com.dunk.tfc.Handlers.TFCFuelHandler;
+import com.dunk.tfc.Items.ItemBoots;
+import com.dunk.tfc.Items.ItemClothing;
+import com.dunk.tfc.Items.ItemHat;
+import com.dunk.tfc.Items.ItemShirt;
+import com.dunk.tfc.api.Armor;
+import com.dunk.tfc.api.TFCItems;
+import com.dunk.tfc.api.Interfaces.IEquipable;
+import com.dunk.tfc.api.Interfaces.IEquipable.EquipType;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+
+public class BarkItems extends TFCItems{
+	
+	//Materials
+	public static Item barksheet;
+	public static Item barkstrip;
+	public static Item barkcloth;
+	
+	//Clothes
+	public static Item birchbarkshirt;
+	public static Item birchbarkshirtstripped;
+	public static Item birchbastshoes;
+	public static Item birchbastshoesstripped;
+	public static Item birchboots;
+	public static Item birchbootsstripped;
+	public static Item birchhat;
+	public static Item birchhatstripped;
+	
+	public static Item birchbasket;
+	public static Item birchbasketstripped;
+	
+	public static void setup()
+	{
+		//Barks
+		barksheet = new ItemBarkSheet().setUnlocalizedName("BarkSheet");
+		barkstrip = new ItemBarkStrip().setUnlocalizedName("BarkStrip");
+		barkcloth = new ItemBarkCloth().setUnlocalizedName("BarkCloth");		
+		
+		
+		//Clothes
+		birchbarkshirt = new ItemShirt(IEquipable.ClothingType.SHIRT)
+				.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark Shirt.png")
+				.setHeatResistance(0).setColdResistance(1).setStraw(true).setArmorType(Armor.strawClothes).setMaxDamage(strawUses).setUnlocalizedName("BirchBarkShirt");
+		birchbarkshirtstripped = new ItemShirt(IEquipable.ClothingType.SHIRT)
+				.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark Shirt Stripped.png")
+				.setHeatResistance(0).setColdResistance(1).setStraw(true).setArmorType(Armor.strawClothes).setMaxDamage(strawUses).setUnlocalizedName("BirchBarkShirtStripped");
+		
+		//Boots
+		birchbastshoes = ((ItemClothing) (new ItemBoots(IEquipable.ClothingType.FULLBOOTS).setDefaultWalkable(0.05f)
+				.addWalkableSurface(Material.sand, 0.1f).addWalkableSurface(Material.grass, 0.5f).addWalkableSurface(Material.snow, -0.1f)))
+						.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark BastShoes.png").setHeatResistance(1).setColdResistance(0).setStraw(true).setArmorType(Armor.strawClothes)
+						.setMaxDamage(strawUses).setUnlocalizedName("BirchBastShoes");
+		birchbastshoesstripped = ((ItemClothing) (new ItemBoots(IEquipable.ClothingType.FULLBOOTS).setDefaultWalkable(0.05f)
+				.addWalkableSurface(Material.sand, 0.1f).addWalkableSurface(Material.grass, 0.5f).addWalkableSurface(Material.snow, -0.1f)))
+						.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark BastShoes Stripped.png").setHeatResistance(1).setColdResistance(0).setStraw(true).setArmorType(Armor.strawClothes)
+						.setMaxDamage(strawUses).setUnlocalizedName("BirchBastShoesStripped");
+		
+		birchboots = ((ItemClothing) (new ItemBoots(IEquipable.ClothingType.FULLBOOTS).setDefaultWalkable(0.1f)
+				.addWalkableSurface(Material.sand, -0.1f).addWalkableSurface(Material.grass, 0.5f).addWalkableSurface(Material.snow, 0.1f)))
+						.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark Boots.png").setHeatResistance(0).setColdResistance(1).setStraw(true).setArmorType(Armor.strawClothes)
+						.setMaxDamage(strawUses).setUnlocalizedName("BirchBoots");
+		birchbootsstripped = ((ItemClothing) (new ItemBoots(IEquipable.ClothingType.FULLBOOTS).setDefaultWalkable(0.1f)
+				.addWalkableSurface(Material.sand, -0.1f).addWalkableSurface(Material.grass, 0.5f).addWalkableSurface(Material.snow, 0.1f)))
+						.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark Boots Stripped.png").setHeatResistance(0).setColdResistance(1).setStraw(true).setArmorType(Armor.strawClothes)
+						.setMaxDamage(strawUses).setUnlocalizedName("BirchBootsStripped");
+		
+		//Hats
+		birchhat = new ItemHat(IEquipable.ClothingType.CLOTH_HAT).setNoWearInCold(true).setHeadSunProtection(0.5f)
+				.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark Hat.png")
+				.setHeatResistance(0).setColdResistance(1).setStraw(true).setArmorType(Armor.strawClothes).setMaxDamage(strawUses * 4).setUnlocalizedName("BirchHat");
+		birchhatstripped = new ItemHat(IEquipable.ClothingType.CLOTH_HAT).setHeadSunProtection(0.5f)
+				.setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark Hat Stripped.png")
+				.setHeatResistance(0).setColdResistance(1).setStraw(true).setArmorType(Armor.strawClothes).setMaxDamage(strawUses * 4).setUnlocalizedName("BirchHatStripped");
+		
+		birchbasket = new BarkBasket().setUnlocalizedName("BirchBarkBasket").setResourceLocation(Bark.MODID, "textures/models/clothes/BirchBark Hat Stripped.png");
+		birchbasketstripped = new BarkBasket().setUnlocalizedName("BirchBarkBasketStripped");
+		
+		
+		//Register
+		GameRegistry.registerItem(barksheet, barksheet.getUnlocalizedName());
+		GameRegistry.registerItem(barkstrip, barkstrip.getUnlocalizedName());
+		GameRegistry.registerItem(barkcloth, barkcloth.getUnlocalizedName());
+		GameRegistry.registerItem(birchbarkshirt, birchbarkshirt.getUnlocalizedName());
+		GameRegistry.registerItem(birchbarkshirtstripped, birchbarkshirtstripped.getUnlocalizedName());
+		GameRegistry.registerItem(birchbastshoes, birchbastshoes.getUnlocalizedName());
+		GameRegistry.registerItem(birchbastshoesstripped, birchbastshoesstripped.getUnlocalizedName());
+		GameRegistry.registerItem(birchboots, birchboots.getUnlocalizedName());
+		GameRegistry.registerItem(birchbootsstripped, birchbootsstripped.getUnlocalizedName());
+		GameRegistry.registerItem(birchhat, birchhat.getUnlocalizedName());
+		GameRegistry.registerItem(birchhatstripped, birchhatstripped.getUnlocalizedName());
+		GameRegistry.registerItem(birchbasket, birchbasket.getUnlocalizedName());
+		GameRegistry.registerItem(birchbasketstripped, birchbasketstripped.getUnlocalizedName());
+	}
+	//Fuels
+	public static void registerFurnaceFuel()
+	{
+		TFCFuelHandler.registerFuel(barksheet, 800);
+		TFCFuelHandler.registerFuel(barkstrip, 400);
+		TFCFuelHandler.registerFuel(barkcloth, 1600);
+	}
+}

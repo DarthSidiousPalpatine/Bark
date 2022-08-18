@@ -1,0 +1,16 @@
+[
+{
+  "modid": "bark",
+  "name": "Bark",
+  "description": "Bark.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ExampleDude"],
+  "credits": "The sanguinius_sloth, the bid, the DeadTomLives and everyone in TFC+ discord.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

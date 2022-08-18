@@ -1,0 +1,5 @@
+package com.Muurr.Bark.Handlers;
+
+public class BarkEntityLivingHandler {
+
+}

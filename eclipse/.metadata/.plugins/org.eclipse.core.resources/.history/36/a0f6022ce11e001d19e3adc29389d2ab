@@ -1,0 +1,21 @@
+package com.Muurr.Bark.Misc;
+
+import java.util.List;
+
+import com.dunk.tfc.Core.TFC_Achievements;
+
+import net.minecraft.stats.Achievement;
+import net.minecraftforge.common.AchievementPage;
+
+public class BarkAchievements extends TFC_Achievements{
+	public static Achievement birchBarkPants;
+	
+	private static List<Achievement> achlist;
+	public static AchievementPage pageBark;
+	public static Achievement[] achievementsBark;
+	
+	public static void init()
+	{
+		
+	}
+}
